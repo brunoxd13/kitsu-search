@@ -6,7 +6,7 @@ const CharacterDispatchContext = React.createContext();
 
 function CharacterProvider({ children }) {
   const [state, dispatch] = React.useReducer(characterReducer, {
-    characters: {},
+    characters: [],
     info: {},
     loading: true
   });

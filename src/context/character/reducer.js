@@ -3,7 +3,7 @@ function characterReducer(state, action) {
     case "fetchAllCharacters": {
       return {
         ...state,
-        characters: { ...action.data },
+        characters: [...action.data],
         loading: false
       };
     }
