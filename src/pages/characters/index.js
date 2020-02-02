@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-import { truncateString } from "../../utils/truncate-string";
+import CharactersList from "./components/characters-list";
+import CharacterSearch from "./components/character-search";
+
 import {
   useCharacterState,
   useCharacterDispatch,
@@ -22,45 +24,9 @@ const Characters = () => {
 
   return (
     <>
-      <CharactersTable characters={characters} />
+      <CharacterSearch />
+      <CharactersList characters={characters} />
     </>
-  );
-};
-
-const CharactersTable = ({ characters }) => {
-  return (
-    <table border="1">
-      <thead>
-        <tr>
-          <td>Personagem</td>
-          <td>Descrição</td>
-        </tr>
-      </thead>
-
-      <tbody>
-        {characters.map(character => {
-          const {
-            attributes: { name, description, image }
-          } = character;
-
-          return (
-            <tr key={`character-${name}`}>
-              <td>
-                <img alt={`Imagem do ${name}`} src={image.original} />
-                {name}
-              </td>
-              <td>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: truncateString(description, 200)
-                  }}
-                />
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
   );
 };
 
