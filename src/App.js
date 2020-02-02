@@ -1,14 +1,19 @@
 import React from "react";
-import Routes from "./routes";
+import styled from "styled-components";
 
+import Routes from "./routes";
 import Header from "./components/header";
+
+const Container = styled.div`
+  margin: 20px 42px 0;
+`;
 
 const App = () => {
   return (
-    <div className="App">
+    <Container>
       <Header />
       <Routes />
-    </div>
+    </Container>
   );
 };
 
