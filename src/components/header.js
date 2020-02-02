@@ -1,24 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+import Heading, { SubHeading } from "./base/heading";
+
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const Heading = styled.span`
-  font-weight: ${props => props.theme.fontWeight.black};
-  font-size: ${props => props.theme.fontSizes.large};
-  color: ${props => props.theme.colors.red};
-`;
-
-const SubHeading = styled(Heading)`
-  font-weight: ${props => props.theme.fontWeight.ligth};
-`;
-
 const Separator = styled.div`
   background-color: ${props => props.theme.colors.red};
-  margin-bottom: ${props => props.theme.spaces[5]};
+  margin-bottom: 34px;
   height: 4px;
   width: 58px;
 `;
