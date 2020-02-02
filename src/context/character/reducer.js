@@ -1,20 +1,36 @@
+import {
+  FETCH_ALL_CHARACTERS,
+  FETCH_CHARACTER,
+  TOGGLE_LOADING,
+  FETCH_INFO
+} from "./actions";
+
 function characterReducer(state, action) {
   switch (action.type) {
-    case "fetchAllCharacters": {
+    case FETCH_ALL_CHARACTERS: {
       return {
         ...state,
-        characters: [...action.data],
-        loading: false
+        characters: [...action.data]
       };
     }
-
-    case "fetchInfo": {
+    case FETCH_CHARACTER: {
+      return {
+        ...state,
+        character: action.data
+      };
+    }
+    case FETCH_INFO: {
       return {
         ...state,
         info: {
           ...action.data
-        },
-        loading: false
+        }
+      };
+    }
+    case TOGGLE_LOADING: {
+      return {
+        ...state,
+        loading: action.loading
       };
     }
 

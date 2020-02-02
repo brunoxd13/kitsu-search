@@ -4,12 +4,15 @@ import { characterReducer } from "./reducer";
 const CharacterStateContext = React.createContext();
 const CharacterDispatchContext = React.createContext();
 
+const INITIAL_STATE = {
+  characters: [],
+  character: {},
+  info: {},
+  loading: true
+};
+
 function CharacterProvider({ children }) {
-  const [state, dispatch] = React.useReducer(characterReducer, {
-    characters: [],
-    info: {},
-    loading: true
-  });
+  const [state, dispatch] = React.useReducer(characterReducer, INITIAL_STATE);
 
   return (
     <CharacterStateContext.Provider value={state}>

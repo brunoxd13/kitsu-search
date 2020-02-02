@@ -1,14 +1,33 @@
 import * as characterAPI from "../../service/character-api";
 
+const TOGGLE_LOADING = "toggleLoading";
+const FETCH_ALL_CHARACTERS = "fetchAllCharacters";
+const FETCH_CHARACTER = "fetchCharacter";
+const FETCH_INFO = "fetchInfo";
+
 async function fetchAllCharacters(dispatch) {
+  dispatch({ type: TOGGLE_LOADING, loading: true });
+
   const charactersResponse = await characterAPI.getAll();
 
-  dispatch({ type: "fetchAllCharacters", data: charactersResponse.data });
+  dispatch({ type: FETCH_ALL_CHARACTERS, data: charactersResponse.data });
 
   dispatch({
-    type: "fetchInfo",
+    type: FETCH_INFO,
     data: { ...charactersResponse.links, ...charactersResponse.meta }
   });
+
+  dispatch({ type: TOGGLE_LOADING, loading: false });
 }
 
-export { fetchAllCharacters };
+async function fetchCharacter(dispatch, characterId) {
+  dispatch({ type: TOGGLE_LOADING, loading: true });
+  console.log("fetchCharacter", characterId);
+  const characterResponse = await characterAPI.get(characterId);
+
+  dispatch({ type: FETCH_CHARACTER, data: characterResponse.data });
+  dispatch({ type: TOGGLE_LOADING, loading: false });
+}
+
+export { TOGGLE_LOADING, FETCH_ALL_CHARACTERS, FETCH_CHARACTER, FETCH_INFO };
+export { fetchAllCharacters, fetchCharacter };
