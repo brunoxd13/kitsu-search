@@ -20,6 +20,11 @@ const GlobalStyles = createGlobalStyle`
   *::after {
     box-sizing: inherit;
   }
+
+  textarea,
+  input {
+    -webkit-appearance: none;
+  }
 `;
 
 export default GlobalStyles;

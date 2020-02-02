@@ -15,19 +15,9 @@ const theme = {
     black: 900
   },
   fontSizes: {
-    small: "1rem", // 17px
+    small: "1rem", // 16px
     medium: "1.313rem", // 21px
     large: "1.688rem" // 27px
-  },
-  spaces: {
-    0: "0px",
-    1: "10px",
-    2: "16px",
-    3: "20px",
-    4: "25px",
-    5: "34px",
-    6: "37px",
-    7: "42px"
   }
 };
 
