@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import { CharacterProvider } from "./context/character";
 import App from "./app";
 
-import "./index.css";
+import Theme from "./theme/theme-provider";
+
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <BrowserRouter>
     <CharacterProvider>
-      <App />
+      <Theme>
+        <App />
+      </Theme>
     </CharacterProvider>
   </BrowserRouter>,
   document.getElementById("root")
