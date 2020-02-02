@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Heading, { SubHeading } from "./base/heading";
+import Heading from "./base/heading";
 
 const Title = styled.div`
   display: flex;
@@ -19,10 +19,10 @@ const Header = () => (
   <>
     <Title>
       <Heading>
-        BUSCA KITSU <SubHeading>TESTE FRONT-END</SubHeading>
+        BUSCA KITSU <Heading.Sub d="inline">TESTE FRONT-END</Heading.Sub>
       </Heading>
 
-      <SubHeading>BRUNO RUSSI LAUTENSCHLAGER</SubHeading>
+      <Heading.Sub>BRUNO RUSSI LAUTENSCHLAGER</Heading.Sub>
     </Title>
     <Separator />
   </>

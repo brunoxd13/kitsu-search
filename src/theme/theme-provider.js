@@ -6,8 +6,11 @@ import GlobalStyles from "./global-styles";
 const theme = {
   colors: {
     red: "#d42026",
-    gray: "#A5A5A5",
-    text: "#4E4E4E"
+    gray: "#a5a5a5",
+    text: "#4e4e4e",
+    white: "#ffffff",
+    rose: "#fadfe2",
+    lightRose: "#fcf1f2"
   },
   fontWeight: {
     ligth: 300,
@@ -15,9 +18,9 @@ const theme = {
     black: 900
   },
   fontSizes: {
-    small: "1rem", // 16px
-    medium: "1.313rem", // 21px
-    large: "1.688rem" // 27px
+    sm: "1rem", // 16px
+    md: "1.313rem", // 21px
+    lg: "1.688rem" // 27px
   }
 };
 
