@@ -3,7 +3,8 @@ import {
   FETCH_ALL_CHARACTERS,
   FETCH_CHARACTER,
   TOGGLE_LOADING,
-  FETCH_INFO
+  FETCH_INFO,
+  SET_ERROR
 } from "./actions";
 
 function characterReducer(state, action) {
@@ -43,7 +44,12 @@ function characterReducer(state, action) {
         loading: action.loading
       };
     }
-
+    case SET_ERROR: {
+      return {
+        ...state,
+        error: action.error
+      };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

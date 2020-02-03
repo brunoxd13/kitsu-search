@@ -8,7 +8,8 @@ const INITIAL_STATE = {
   characters: [],
   character: {},
   info: {},
-  loading: true
+  loading: true,
+  error: false
 };
 
 function CharacterProvider({ children }) {
