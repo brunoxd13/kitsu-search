@@ -7,6 +7,7 @@ import Flex from "./base/flex";
 
 const Title = styled(Flex)`
   justify-content: space-between;
+  cursor: pointer;
 `;
 
 const Separator = styled.div`
