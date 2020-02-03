@@ -13,7 +13,7 @@ const Container = styled.div`
   margin-bottom: 34px;
 `;
 
-const CharacterSearch = ({ searchName }) => {
+const CharacterSearch = ({ searchName = "" }) => {
   const history = useHistory();
 
   const [searchTerm, setSearchTerm] = useState(undoNormalizeTerm(searchName));
