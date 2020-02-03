@@ -36,7 +36,7 @@ const NameAndImage = ({ name, image, ...props }) => {
 };
 
 const CharacterRow = ({ id, name, image, description }) => (
-  <div key={`character-${name}`}>
+  <div>
     <Link to={`/character/${id}`} style={{ textDecoration: "none" }}>
       <CharacterRowContainer>
         <NameAndImage mr="5px" flexBasis="25%" name={name} image={image} />

@@ -5,10 +5,11 @@ const FETCH_ALL_CHARACTERS = "fetchAllCharacters";
 const FETCH_CHARACTER = "fetchCharacter";
 const FETCH_INFO = "fetchInfo";
 
-async function fetchAllCharacters(dispatch) {
+async function fetchAllCharacters(dispatch, pageNumber = 1) {
   dispatch({ type: TOGGLE_LOADING, loading: true });
 
-  const charactersResponse = await characterAPI.getAll();
+  const characterStart = pageNumber * 10 - 10;
+  const charactersResponse = await characterAPI.getAll(characterStart);
 
   dispatch({ type: FETCH_ALL_CHARACTERS, data: charactersResponse.data });
 
@@ -22,7 +23,7 @@ async function fetchAllCharacters(dispatch) {
 
 async function fetchCharacter(dispatch, characterId) {
   dispatch({ type: TOGGLE_LOADING, loading: true });
-  console.log("fetchCharacter", characterId);
+
   const characterResponse = await characterAPI.get(characterId);
 
   dispatch({ type: FETCH_CHARACTER, data: characterResponse.data });

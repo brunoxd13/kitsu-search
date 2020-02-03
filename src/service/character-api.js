@@ -5,7 +5,9 @@ export const get = async characterId => {
   return res.json();
 };
 
-export const getAll = async () => {
-  const res = await fetch(`${api}/characters`);
+export const getAll = async characterStart => {
+  const res = await fetch(
+    `${api}/characters?page%5Blimit%5D=10&page%5Boffset%5D=${characterStart}`
+  );
   return res.json();
 };

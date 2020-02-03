@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router";
 
 import CharactersList from "./components/characters-list";
 import CharacterSearch from "./components/character-search";
@@ -10,11 +11,12 @@ import {
 } from "../../context/character";
 
 const Characters = () => {
+  const { id } = useParams();
   const dispatch = useCharacterDispatch();
 
   useEffect(() => {
-    fetchAllCharacters(dispatch);
-  }, [dispatch]);
+    fetchAllCharacters(dispatch, id);
+  }, [dispatch, id]);
 
   const { characters, loading } = useCharacterState();
 

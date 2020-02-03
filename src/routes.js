@@ -7,6 +7,7 @@ import Character from "./pages/character";
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Characters} />
+    <Route path="/page/:id(\d+)" component={Characters} />
     <Route path="/character/:id(\d+)" component={Character} />
     <Route component={() => <Redirect to={{ pathname: "/" }} />} />
   </Switch>

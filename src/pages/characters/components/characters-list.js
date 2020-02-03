@@ -25,7 +25,11 @@ const CharactersList = ({ characters }) => {
 
       <Box>
         {characters.map(({ attributes, id }) => (
-          <CharacterRow id={id} {...attributes} />
+          <CharacterRow
+            key={`character-${attributes.name}`}
+            id={id}
+            {...attributes}
+          />
         ))}
       </Box>
     </>
