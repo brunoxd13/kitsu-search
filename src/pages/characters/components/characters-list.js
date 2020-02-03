@@ -11,16 +11,39 @@ const CharacterListHeader = styled(Flex)`
   width: 100%;
 `;
 
+const CharacterContainer = styled(Box)`
+  background-color: ${props => props.theme.colors.red};
+  margin-right: 5px;
+  flex-basis: 25%;
+  padding: 9px;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+  }
+`;
+
+const DescriptionContainer = styled(Box)`
+  background-color: ${props => props.theme.colors.red};
+  margin-left: 5px;
+  flex-basis: 75%;
+  padding: 9px;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-basis: 0%;
+  }
+`;
+
 const CharactersList = ({ characters }) => {
   return (
     <>
       <CharacterListHeader>
-        <Text bg="red" p="9px" mr="5px" color="white" flexBasis="25%">
-          Personagem
-        </Text>
-        <Text bg="red" p="9px" ml="5px" color="white" flexBasis="75%">
-          Descrição
-        </Text>
+        <CharacterContainer>
+          <Text color="white">Personagem</Text>
+        </CharacterContainer>
+        <DescriptionContainer>
+          <Text color="white">Descrição</Text>
+        </DescriptionContainer>
       </CharacterListHeader>
 
       <Box>

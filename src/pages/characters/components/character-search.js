@@ -11,6 +11,12 @@ import normalizeTerm, {
 
 const Container = styled.div`
   margin-bottom: 34px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 `;
 
 const CharacterSearch = ({ searchName = "" }) => {
@@ -33,7 +39,8 @@ const CharacterSearch = ({ searchName = "" }) => {
         id="search-input"
         onChange={e => setSearchTerm(e.target.value)}
         onKeyPress={onHandleKeyPress}
-        width="400px"
+        width="100%"
+        maxWidth="400px"
         value={searchTerm}
       />
     </Container>

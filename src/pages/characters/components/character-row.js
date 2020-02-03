@@ -17,14 +17,37 @@ const CharacterRowContainer = styled(Flex)`
   &:hover {
     background-color: ${props => props.theme.colors.lightRose};
   }
+
+  @media (max-width: 768px) {
+    padding: 18px 25px;
+  }
+`;
+
+const CharacterDescriptionContainer = styled(Box)`
+  margin-left: 5px;
+  flex-basis: 75%;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-basis: 0%;
+  }
+`;
+
+const NameAndImageContainer = styled(Box)`
+  margin-right: 5px;
+  flex-basis: 25%;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+  }
 `;
 
 const NameAndImage = ({ name, image, ...props }) => {
   return (
     <Flex align="center" {...props}>
       <Image
-        w="54px"
-        h="54px"
+        w="58px"
+        h="58px"
         alt={`Imagem do ${name}`}
         src={image && image.original}
         borderRadius="50%"
@@ -39,15 +62,17 @@ const CharacterRow = ({ id, name, image, description }) => (
   <div>
     <Link to={`/character/${id}`} style={{ textDecoration: "none" }}>
       <CharacterRowContainer>
-        <NameAndImage mr="5px" flexBasis="25%" name={name} image={image} />
-        <Box ml="5px" flexBasis="75%">
+        <NameAndImageContainer>
+          <NameAndImage name={name} image={image} />
+        </NameAndImageContainer>
+        <CharacterDescriptionContainer>
           <Text
             fontSize="md"
             dangerouslySetInnerHTML={{
               __html: truncateString(description.split("<br>").join(" "), 200)
             }}
           />
-        </Box>
+        </CharacterDescriptionContainer>
       </CharacterRowContainer>
     </Link>
   </div>

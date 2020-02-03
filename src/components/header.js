@@ -5,9 +5,23 @@ import { useHistory } from "react-router-dom";
 import Heading from "./base/heading";
 import Flex from "./base/flex";
 
+const AuthorName = styled(Heading.Sub)`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const ProjectName = styled(Heading)`
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    margin-left: 16px;
+    font-size: ${props => props.theme.fontSizes.sm};
+  }
+`;
+
 const Title = styled(Flex)`
   justify-content: space-between;
-  cursor: pointer;
 `;
 
 const Separator = styled.div`
@@ -15,6 +29,11 @@ const Separator = styled.div`
   margin-bottom: 34px;
   height: 4px;
   width: 58px;
+
+  @media (max-width: 768px) {
+    margin-left: 16px;
+    margin-bottom: 12px;
+  }
 `;
 
 const Header = () => {
@@ -22,14 +41,14 @@ const Header = () => {
   return (
     <>
       <Title>
-        <Heading
-          style={{ cursor: "pointer" }}
-          onClick={() => history.push("/")}
-        >
-          BUSCA KITSU <Heading.Sub d="inline">TESTE FRONT-END</Heading.Sub>
-        </Heading>
+        <ProjectName onClick={() => history.push("/")}>
+          BUSCA KITSU{" "}
+          <Heading.Sub d="inline" fontSize="inherit">
+            TESTE FRONT-END
+          </Heading.Sub>
+        </ProjectName>
 
-        <Heading.Sub>BRUNO RUSSI LAUTENSCHLAGER</Heading.Sub>
+        <AuthorName>BRUNO RUSSI LAUTENSCHLAGER</AuthorName>
       </Title>
       <Separator />
     </>

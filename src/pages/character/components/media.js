@@ -15,9 +15,17 @@ const MediaImage = styled(Image)`
   height: 200px;
 `;
 
+const MediaContent = styled(Flex)`
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 const Media = ({ media }) => (
   <Box mb="10px">
-    <Flex directrion="row">
+    <MediaContent>
       <MediaImage
         alt={`Image for media ${media.attributes.canonicalTitle}`}
         src={media.attributes.posterImage.original}
@@ -36,7 +44,8 @@ const Media = ({ media }) => (
           }}
         />
       </Box>
-    </Flex>
+    </MediaContent>
+    <Box as="hr" color="gray" height="0.5px" width="100%" />
   </Box>
 );
 

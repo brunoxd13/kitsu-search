@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 import Heading from "../../components/base/heading";
 import Box from "../../components/base/box";
@@ -14,6 +15,12 @@ import {
   fetchCharacter
 } from "../../context/character";
 
+const Container = styled(Box)`
+  @media (max-width: 768px) {
+    margin: 20px 42px 0;
+  }
+`;
+
 const Character = () => {
   const { id } = useParams();
   const dispatch = useCharacterDispatch();
@@ -22,7 +29,7 @@ const Character = () => {
     fetchCharacter(dispatch, id);
   }, [dispatch, id]);
 
-  const { character, loading } = useCharacterState();
+  const { character, loading, error } = useCharacterState();
 
   if (loading) {
     return <h1>Carregando</h1>;
@@ -30,29 +37,33 @@ const Character = () => {
 
   const { attributes } = character;
 
+  if (error || !character || !attributes) {
+    return <h1>Erro</h1>;
+  }
+
   return (
-    <>
+    <Container>
       <Box>
-        <Heading color="black">{attributes.name}</Heading>
+        <Heading color="black">{attributes && attributes.name}</Heading>
       </Box>
       <Box overflow="hidden" mb="20px">
         <UserImage
-          alt={`Image for charcer ${attributes.name}`}
-          src={attributes.image.original}
+          alt={`Image for charcer ${attributes && attributes.name}`}
+          src={attributes && attributes.image.original}
         />
         <Text
           as="p"
           textAlign="justify"
           fontSize="sm"
           dangerouslySetInnerHTML={{
-            __html: attributes.description
+            __html: attributes && attributes.description
           }}
         />
       </Box>
       <Box>
         <MediaContainer character={character} />
       </Box>
-    </>
+    </Container>
   );
 };
 
