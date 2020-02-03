@@ -23,3 +23,13 @@ export const getAllByName = async (characterStart, name) => {
   );
   return res.json();
 };
+
+export const getCharacterMediaIds = async characterId => {
+  const res = await fetch(`${api}/characters/${characterId}/media-characters`);
+  return res.json();
+};
+
+export const getCharacterMedia = async mediaId => {
+  const res = await fetch(`${api}/media-characters/${mediaId}/media`);
+  return res.json();
+};

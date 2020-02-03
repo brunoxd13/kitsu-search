@@ -1,4 +1,5 @@
 import {
+  FETCH_CHARACTER_MEDIA,
   FETCH_ALL_CHARACTERS,
   FETCH_CHARACTER,
   TOGGLE_LOADING,
@@ -17,6 +18,15 @@ function characterReducer(state, action) {
       return {
         ...state,
         character: action.data
+      };
+    }
+    case FETCH_CHARACTER_MEDIA: {
+      return {
+        ...state,
+        character: {
+          ...state.character,
+          medias: [...action.data]
+        }
       };
     }
     case FETCH_INFO: {
