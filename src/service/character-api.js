@@ -5,9 +5,21 @@ export const get = async characterId => {
   return res.json();
 };
 
-export const getAll = async characterStart => {
+export const getAll = async (characterStart, searchName) => {
+  if (searchName) {
+    return await getAllByName(characterStart, searchName);
+  }
+
   const res = await fetch(
-    `${api}/characters?page%5Blimit%5D=10&page%5Boffset%5D=${characterStart}`
+    `${api}/characters?characters?page[limit]=10&page[offset]=${characterStart}`
+  );
+
+  return res.json();
+};
+
+export const getAllByName = async (characterStart, name) => {
+  const res = await fetch(
+    `${api}/characters?characters?page[limit]=10&page[offset]=${characterStart}&filter[name]=${name}`
   );
   return res.json();
 };

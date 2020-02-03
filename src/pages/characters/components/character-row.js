@@ -26,7 +26,7 @@ const NameAndImage = ({ name, image, ...props }) => {
         w="54px"
         h="54px"
         alt={`Imagem do ${name}`}
-        src={image.original}
+        src={image && image.original}
         borderRadius="50%"
         mr="25px"
       />

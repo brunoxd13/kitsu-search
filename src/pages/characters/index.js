@@ -11,12 +11,12 @@ import {
 } from "../../context/character";
 
 const Characters = () => {
-  const { id } = useParams();
+  const { id, searchName } = useParams();
   const dispatch = useCharacterDispatch();
 
   useEffect(() => {
-    fetchAllCharacters(dispatch, id);
-  }, [dispatch, id]);
+    fetchAllCharacters(dispatch, id, searchName);
+  }, [dispatch, id, searchName]);
 
   const { characters, loading } = useCharacterState();
 
@@ -26,7 +26,7 @@ const Characters = () => {
 
   return (
     <>
-      <CharacterSearch />
+      <CharacterSearch searchName={searchName} />
       <CharactersList characters={characters} />
     </>
   );

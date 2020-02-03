@@ -5,11 +5,15 @@ const FETCH_ALL_CHARACTERS = "fetchAllCharacters";
 const FETCH_CHARACTER = "fetchCharacter";
 const FETCH_INFO = "fetchInfo";
 
-async function fetchAllCharacters(dispatch, pageNumber = 1) {
+async function fetchAllCharacters(dispatch, pageNumber = 1, searchName) {
   dispatch({ type: TOGGLE_LOADING, loading: true });
 
   const characterStart = pageNumber * 10 - 10;
-  const charactersResponse = await characterAPI.getAll(characterStart);
+
+  const charactersResponse = await characterAPI.getAll(
+    characterStart,
+    searchName
+  );
 
   dispatch({ type: FETCH_ALL_CHARACTERS, data: charactersResponse.data });
 

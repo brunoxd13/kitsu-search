@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import Input from "../../../components/base/input";
 import Text from "../../../components/base/text";
 
+import normalizeTerm, {
+  undoNormalizeTerm
+} from "../../../utils/normalize-term";
+
 const Container = styled.div`
   margin-bottom: 34px;
 `;
 
-const CharacterSearch = () => {
+const CharacterSearch = ({ searchName }) => {
+  const history = useHistory();
+
+  const [searchTerm, setSearchTerm] = useState(undoNormalizeTerm(searchName));
+
+  const onHandleKeyPress = e => {
+    if (e.key === "Enter") {
+      history.push(`/search/${normalizeTerm(searchTerm)}`);
+    }
+  };
+
   return (
     <Container>
       <Text as="label" htmlFor="search-input" d="block" color="red">
@@ -16,8 +31,10 @@ const CharacterSearch = () => {
       </Text>
       <Input
         id="search-input"
-        onChange={e => console.log(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
+        onKeyPress={onHandleKeyPress}
         width="400px"
+        value={searchTerm}
       />
     </Container>
   );
