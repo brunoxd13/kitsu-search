@@ -35,7 +35,7 @@ const Character = () => {
       <Box>
         <Heading color="black">{attributes.name}</Heading>
       </Box>
-      <Box>
+      <Box overflow="hidden" mb="20px">
         <UserImage
           alt={`Image for charcer ${attributes.name}`}
           src={attributes.image.original}

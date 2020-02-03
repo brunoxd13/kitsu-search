@@ -22,6 +22,7 @@ const Media = ({ media }) => (
         alt={`Image for media ${media.attributes.canonicalTitle}`}
         src={media.attributes.posterImage.original}
       />
+
       <Box>
         <Heading.Sub fontSize="md" color="black">
           {media.attributes.canonicalTitle}

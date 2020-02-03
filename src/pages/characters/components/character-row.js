@@ -44,7 +44,7 @@ const CharacterRow = ({ id, name, image, description }) => (
           <Text
             fontSize="md"
             dangerouslySetInnerHTML={{
-              __html: truncateString(description, 200)
+              __html: truncateString(description.split("<br>").join(" "), 200)
             }}
           />
         </Box>
