@@ -63,7 +63,7 @@ const Arrow = styled(Box)`
 
 const Pagination = ({ totalPerPage, total }) => {
   const history = useHistory();
-  const { id } = useParams();
+  const { id, searchName } = useParams();
   const pageNumber = parseInt(id) || 1;
   const totalPages = total / totalPerPage;
   const [width] = useWindowSize();
@@ -78,14 +78,21 @@ const Pagination = ({ totalPerPage, total }) => {
     pageNumbers.push(i);
   }
 
+  const getBaseUrl = () => {
+    if (searchName) {
+      return `/search/${searchName}/`;
+    }
+    return "/page/";
+  };
+
   const previousPage = () => {
     if (pageNumber - 1 < 1) return;
-    history.push(`/page/${pageNumber - 1}`);
+    history.push(`${getBaseUrl()}${pageNumber - 1}`);
   };
 
   const nextPage = () => {
     if (pageNumber + 1 > totalPages) return;
-    history.push(`/page/${pageNumber + 1}`);
+    history.push(`${getBaseUrl()}${pageNumber + 1}`);
   };
 
   return (
@@ -97,7 +104,7 @@ const Pagination = ({ totalPerPage, total }) => {
         <PageBullet
           active={number === pageNumber}
           key={number}
-          onClick={() => history.push(`/page/${number}`)}
+          onClick={() => history.push(`${getBaseUrl()}${number}`)}
         >
           {number}
         </PageBullet>
