@@ -1,7 +1,7 @@
 # Kitsu Search
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/brunoxd13/kitsu-search/master/public/logo192.png?token=AB4U6AQROXOLMFJBG6WA7JS6HDE2C" alt="logo" width="100" />
+  <img src="https://raw.githubusercontent.com/brunoxd13/kitsu-search/master/public/logo192.png" alt="logo" width="100" />
 </p>
 <br>
 
