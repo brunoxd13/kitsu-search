@@ -23,7 +23,7 @@ Heading.defaultProps = {
 
 Heading.propTypes = {
   as: propTypes.string,
-  fontSize: propTypes.oneOf(["sm", "md", "lg"]),
+  fontSize: propTypes.oneOf(["inherit", "sm", "md", "lg"]),
   color: propTypes.string
 };
 
@@ -39,14 +39,14 @@ SubHeading.displayName = "SubHeading";
 
 SubHeading.defaultProps = {
   m: 0,
-  as: "h1",
+  as: "h2",
   fontSize: "lg",
   color: "red"
 };
 
 SubHeading.propTypes = {
   as: propTypes.string,
-  size: propTypes.oneOf(["sm", "md", "lg"]),
+  fontSize: propTypes.oneOf(["inherit", "sm", "md", "lg"]),
   color: propTypes.string
 };
 

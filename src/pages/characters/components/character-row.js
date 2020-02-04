@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { truncateString } from "../../../utils/truncate-string";
 
@@ -11,6 +11,7 @@ import Image from "../../../components/base/image";
 
 const CharacterRowContainer = styled(Flex)`
   width: 100%;
+  cursor: pointer;
   padding: 20px 25px;
   border-bottom: 2px solid ${props => props.theme.colors.rose};
 
@@ -52,30 +53,36 @@ const NameAndImage = ({ name, image, ...props }) => {
         src={image && image.original}
         borderRadius="50%"
         mr="25px"
+        data-testid="character-image"
       />
-      <Text fontSize="md">{name}</Text>
+      <Text fontSize="md" data-testid="character-name">
+        {name}
+      </Text>
     </Flex>
   );
 };
 
-const CharacterRow = ({ id, name, image, description }) => (
-  <div>
-    <Link to={`/character/${id}`} style={{ textDecoration: "none" }}>
-      <CharacterRowContainer>
-        <NameAndImageContainer>
-          <NameAndImage name={name} image={image} />
-        </NameAndImageContainer>
-        <CharacterDescriptionContainer>
-          <Text
-            fontSize="md"
-            dangerouslySetInnerHTML={{
-              __html: truncateString(description.split("<br>").join(" "), 200)
-            }}
-          />
-        </CharacterDescriptionContainer>
-      </CharacterRowContainer>
-    </Link>
-  </div>
-);
+const CharacterRow = ({ id, name, image, description }) => {
+  const history = useHistory();
+
+  return (
+    <CharacterRowContainer
+      onClick={() => history.push(`/character/${id}`)}
+      data-testid="character-row"
+    >
+      <NameAndImageContainer>
+        <NameAndImage name={name} image={image} />
+      </NameAndImageContainer>
+      <CharacterDescriptionContainer data-testid="character-description">
+        <Text
+          fontSize="md"
+          dangerouslySetInnerHTML={{
+            __html: truncateString(description.split("<br>").join(" "), 200)
+          }}
+        />
+      </CharacterDescriptionContainer>
+    </CharacterRowContainer>
+  );
+};
 
 export default CharacterRow;

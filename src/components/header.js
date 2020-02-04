@@ -11,8 +11,10 @@ const AuthorName = styled(Heading.Sub)`
   }
 `;
 
-const ProjectName = styled(Heading)`
+const ProjectName = styled(Flex)`
   cursor: pointer;
+  display: inline;
+  font-size: ${props => props.theme.fontSizes.lg};
 
   @media (max-width: 768px) {
     margin-left: 16px;
@@ -42,7 +44,9 @@ const Header = () => {
     <>
       <Title>
         <ProjectName onClick={() => history.push("/")}>
-          BUSCA KITSU{" "}
+          <Heading d="inline" fontSize="inherit">
+            BUSCA KITSU
+          </Heading>{" "}
           <Heading.Sub d="inline" fontSize="inherit">
             TESTE FRONT-END
           </Heading.Sub>

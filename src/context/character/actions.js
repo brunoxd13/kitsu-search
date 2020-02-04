@@ -1,4 +1,5 @@
 import * as characterAPI from "../../service/character-api";
+import removeDuplicated from "../../utils/remove-duplicated";
 
 const TOGGLE_LOADING = "toggleLoading";
 const FETCH_ALL_CHARACTERS = "fetchAllCharacters";
@@ -39,7 +40,9 @@ async function fetchCharacter(dispatch, characterId) {
       characterId
     );
 
-    const mediaIds = characterMediaResponse.data.map(media => media.id);
+    const mediaIds = removeDuplicated(
+      characterMediaResponse.data.map(media => media.id)
+    );
 
     const characterMedias = await Promise.all(
       mediaIds.map(async id => {

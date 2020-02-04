@@ -97,7 +97,12 @@ const Pagination = ({ totalPerPage, total }) => {
 
   return (
     <Flex direction="row" align="center">
-      <Arrow left disable={pageNumber - 1 < 1} onClick={previousPage}>
+      <Arrow
+        left
+        disable={pageNumber - 1 < 1}
+        onClick={previousPage}
+        data-testid="arrow-back"
+      >
         ◀
       </Arrow>
       {pageNumbers.map(number => (
@@ -105,11 +110,17 @@ const Pagination = ({ totalPerPage, total }) => {
           active={number === pageNumber}
           key={number}
           onClick={() => history.push(`${getBaseUrl()}${number}`)}
+          data-testid="page-bullet"
         >
           {number}
         </PageBullet>
       ))}
-      <Arrow right disable={pageNumber + 1 > totalPages} onClick={nextPage}>
+      <Arrow
+        right
+        disable={pageNumber + 1 > totalPages}
+        onClick={nextPage}
+        data-testid="arrow-next"
+      >
         ►
       </Arrow>
     </Flex>

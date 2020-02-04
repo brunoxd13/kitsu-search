@@ -42,12 +42,15 @@ const Character = () => {
   }
 
   return (
-    <Container>
+    <Container data-testid="character-details-container">
       <Box>
-        <Heading color="black">{attributes && attributes.name}</Heading>
+        <Heading color="black" data-testid="character-name">
+          {attributes && attributes.name}
+        </Heading>
       </Box>
       <Box overflow="hidden" mb="20px">
         <UserImage
+          data-testid="character-image"
           alt={`Image for charcer ${attributes && attributes.name}`}
           src={attributes && attributes.image.original}
         />
@@ -55,6 +58,7 @@ const Character = () => {
           as="p"
           textAlign="justify"
           fontSize="sm"
+          data-testid="character-description"
           dangerouslySetInnerHTML={{
             __html: attributes && attributes.description
           }}

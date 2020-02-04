@@ -35,7 +35,13 @@ const Characters = () => {
     <>
       <CharacterSearch searchName={searchName} />
       <CharactersList characters={characters} />
-      <Flex direction="row" justify="center" align="center" mt="18px">
+      <Flex
+        direction="row"
+        justify="center"
+        align="center"
+        mt="18px"
+        data-testid="pagination-container"
+      >
         <Pagination totalPerPage={10} total={info.count} />
       </Flex>
     </>

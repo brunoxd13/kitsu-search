@@ -4,15 +4,15 @@ import {
   background,
   border,
   color,
+  compose,
   flexbox,
   grid,
   layout,
   position,
   shadow,
   space,
-  typography,
-  compose,
-  system
+  system,
+  typography
 } from "styled-system";
 
 export const addPlusProps = {

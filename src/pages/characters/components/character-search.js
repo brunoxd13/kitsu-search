@@ -31,8 +31,14 @@ const CharacterSearch = ({ searchName = "" }) => {
   };
 
   return (
-    <Container>
-      <Text as="label" htmlFor="search-input" d="block" color="red">
+    <Container data-testid="character-search">
+      <Text
+        as="label"
+        data-testid="label-search-input"
+        htmlFor="search-input"
+        d="block"
+        color="red"
+      >
         Nome do personagem
       </Text>
       <Input
@@ -42,6 +48,7 @@ const CharacterSearch = ({ searchName = "" }) => {
         width="100%"
         maxWidth="400px"
         value={searchTerm}
+        data-testid="search-input"
       />
     </Container>
   );

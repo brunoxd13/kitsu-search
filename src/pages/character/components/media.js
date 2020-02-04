@@ -25,20 +25,22 @@ const MediaContent = styled(Flex)`
 
 const Media = ({ media }) => (
   <Box mb="10px">
-    <MediaContent>
+    <MediaContent data-testid="media-content">
       <MediaImage
         alt={`Image for media ${media.attributes.canonicalTitle}`}
         src={media.attributes.posterImage.original}
+        data-testid="media-image"
       />
 
       <Box>
-        <Heading.Sub fontSize="md" color="black">
+        <Heading.Sub fontSize="md" color="black" data-testid="media-title">
           {media.attributes.canonicalTitle}
         </Heading.Sub>
         <Text
           as="p"
           textAlign="justify"
           fontSize="sm"
+          data-testid="media-synopsis"
           dangerouslySetInnerHTML={{
             __html: media.attributes.synopsis
           }}

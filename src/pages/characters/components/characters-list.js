@@ -36,7 +36,7 @@ const DescriptionContainer = styled(Box)`
 
 const CharactersList = ({ characters }) => {
   return (
-    <>
+    <Box data-testid="character-list">
       <CharacterListHeader>
         <CharacterContainer>
           <Text color="white">Personagem</Text>
@@ -49,13 +49,13 @@ const CharactersList = ({ characters }) => {
       <Box>
         {characters.map(({ attributes, id }) => (
           <CharacterRow
-            key={`character-${attributes.name}`}
+            key={`character-${attributes.name}-${id}`}
             id={id}
             {...attributes}
           />
         ))}
       </Box>
-    </>
+    </Box>
   );
 };
 
