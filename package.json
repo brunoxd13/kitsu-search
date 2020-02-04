@@ -35,8 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "babel-plugin-module-resolver": "^4.0.0",
-    "prop-types": "^15.7.2"
-  }
+  "devDependencies": {}
 }
